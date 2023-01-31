@@ -1,0 +1,38 @@
+.AppWrapper {
+  display: grid;
+  width: 1200px;
+  margin: 0 auto;
+  grid-template-areas:
+  "h h"
+  "n c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.Header {
+  grid-area: h;
+  background-color: #cbd8f2;
+}
+
+.Header img{
+  width: 73px;
+}
+.Nav {
+  grid-area: n;
+  background-color: #70ffdf;
+}
+
+.Content {
+  grid-area: c;
+  background-color: #b2ffd0;
+}
+
+.Avatar {
+  width: 34%;
+}
+
+.Fon {
+  width: 100%;
+  height: 200px;
+}
