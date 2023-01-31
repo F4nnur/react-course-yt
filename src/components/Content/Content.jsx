@@ -1,7 +1,8 @@
 import React from 'react';
-import s from "../style.module.scss";
-import image from "../image_2.png";
-import kek from "../kek.jpg";
+import s from "./Content.module.scss";
+import image from "../../image_2.png";
+import kek from "../../kek.jpg";
+import Post from "./Posts/Post/Post";
 
 const Content = () => {
     return (
@@ -12,6 +13,10 @@ const Content = () => {
             <div>
                 <img className={s.Avatar} src={kek}/>
             </div>
+            <Post/>
+            <Post/>
+            <Post/>
+            <Post/>
         </div>
     );
 };
