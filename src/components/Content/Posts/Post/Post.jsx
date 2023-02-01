@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Post.module.scss';
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={s.item}>
-            post 1
+            {props.message}
             <div>
                 <span>like</span>
             </div>

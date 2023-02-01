@@ -13,10 +13,8 @@ const Content = () => {
             <div>
                 <img className={s.Avatar} src={kek}/>
             </div>
-            <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
+            <Post message={"Hi"}/>
+            <Post message={"Hello"}/>
         </div>
     );
 };
