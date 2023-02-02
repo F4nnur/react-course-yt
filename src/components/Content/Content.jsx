@@ -7,7 +7,7 @@ const Content = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            {props.postData.map(dataPost => <Post message={dataPost.data}/>)}
+            {props.state.postData.map(dataPost => <Post message={dataPost.data}/>)}
         </div>
     );
 };
