@@ -13,7 +13,7 @@ const App = () => {
                 <Nav/>
                 <div className={s.AppWrapperContent}>
                     <Routes>
-                        <Route path='/dialogs' element={<Dialogs/>} />
+                        <Route path='/dialogs/*' element={<Dialogs/>} />
                         <Route path='/content' element={<Content/>} />
                     </Routes>
                 </div>
