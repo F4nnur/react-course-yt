@@ -5,27 +5,27 @@ const Nav = () => {
     return (
         <nav className={s.Nav}>
             <div>
-                <a href='#'>
+                <a href='/content'>
                     Profile
                 </a>
             </div>
             <div>
-                <a href='#'>
+                <a href='/dialogs'>
                     Messages
                 </a>
             </div>
             <div>
-                <a href='#'>
+                <a href='/news'>
                     News
                 </a>
             </div>
             <div>
-                <a href='#'>
+                <a href='/music'>
                     Music
                 </a>
             </div>
             <div>
-                <a href='#'>
+                <a href='/settings'>
                     Settings
                 </a>
             </div>

@@ -9,3 +9,9 @@
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
 }
+
+.AppWrapperContent {
+  grid-area: c;
+  background-color: #b2ffd0;
+
+}
