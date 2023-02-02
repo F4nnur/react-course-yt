@@ -18,13 +18,10 @@ const Dialogs = () => {
     return (
         <div className={s.Dialogs}>
             <div className={s.DialogsItems}>
-                <DialogItem name={dialogData[0].name} id={dialogData[0].id}/>
-                <DialogItem name={dialogData[1].name} id={dialogData[1].id}/>
+                {dialogData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>)}
             </div>
             <div className={s.Messages}>
-                <Message message={messageData[0].message}/>
-                <Message message={messageData[1].message}/>
-                <Message message={messageData[2].message}/>
+                {messageData.map(message => <Message message={message.message}/>)}
             </div>
         </div>
     );

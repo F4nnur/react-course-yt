@@ -12,9 +12,7 @@ const Content = () => {
     return (
         <div>
             <ProfileInfo/>
-            <Post message={postData[0].data}/>
-            <Post message={postData[1].data}/>
-            <Post message={postData[2].data}/>
+            { postData.map(data => <Post message={data.data}/>)}
         </div>
     );
 };
