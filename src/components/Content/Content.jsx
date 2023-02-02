@@ -2,17 +2,12 @@ import React from 'react';
 import Post from "./Posts/Post/Post";
 import ProfileInfo from "./ProfileInfo";
 
-const Content = () => {
+const Content = (props) => {
 
-    let postData = [
-        {id: 1, data: 'Hi'},
-        {id: 2, data: 'Hello'},
-        {id: 3, data: 'Cool'},
-    ]
     return (
         <div>
             <ProfileInfo/>
-            { postData.map(data => <Post message={data.data}/>)}
+            {props.postData.map(dataPost => <Post message={dataPost.data}/>)}
         </div>
     );
 };
