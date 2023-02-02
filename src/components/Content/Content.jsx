@@ -6,7 +6,7 @@ import Post from "./Posts/Post/Post";
 
 const Content = () => {
     return (
-        <div className={s.Content}>
+        <div>
             <div>
                 <img className={s.Fon} src={image}/>
             </div>
