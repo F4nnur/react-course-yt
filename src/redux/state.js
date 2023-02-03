@@ -21,27 +21,32 @@ let store = {
             ],
         }
     },
+    
     getState() {
         return this._state;
     },
+
     _renderEntireTree() {
     },
+
     subscribe(observer) {
         this._renderEntireTree = observer;
     },
-    addPost(text) {
-        let newPost = {
-            id: 5,
-            data: text
-        };
-        this._state.mainPage.postData.push(newPost)
-        this._renderEntireTree(this._state);
-    },
-    changeText(text) {
-        this._state.mainPage.textForChange = text;
-        this._renderEntireTree(this._state);
-    },
 
-}
+    dispatch(action) {
+        if (action.type === 'addPost') {
+            let newPost = {
+                id: 5,
+                data: action.text
+            };
+            this._state.mainPage.postData.push(newPost)
+            this._renderEntireTree(this._state);
+        } else if (action.type === 'changeText') {
+            this._state.mainPage.textForChange = action.text;
+            this._renderEntireTree(this._state);
+        }
+    }
+
+};
 
 export default store;

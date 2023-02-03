@@ -6,11 +6,17 @@ const MyPosts = (props) => {
 
     const showElement = () => {
         let text = newPostElement.current.value;
-        props.addPost(text)
+        props.dispatch({
+            type: "addPost",
+            text: text
+        })
     }
 
     let changeText = () => {
-        props.changeText(newPostElement.current.value)
+        props.dispatch({
+            type: "changeText",
+            text: newPostElement.current.value
+        })
     };
 
     return (

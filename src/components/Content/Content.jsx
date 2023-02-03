@@ -9,8 +9,7 @@ const Content = (props) => {
         <div>
             <ProfileInfo/>
             <MyPosts
-                changeText={props.changeText}
-                addPost={props.addPost}
+                dispatch={props.dispatch}
             />
             {props.state.postData.map(dataPost => <Post message={dataPost.data}/>)}
         </div>
