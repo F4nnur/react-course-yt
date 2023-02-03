@@ -1,22 +1,17 @@
 import React from 'react';
 import s from './Post.module.scss';
+import {addPostAC, changeTextAC} from "../../../../redux/state";
 
 const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     const showElement = () => {
         let text = newPostElement.current.value;
-        props.dispatch({
-            type: "addPost",
-            text: text
-        })
+        props.dispatch(addPostAC(text))
     }
 
     let changeText = () => {
-        props.dispatch({
-            type: "changeText",
-            text: newPostElement.current.value
-        })
+        props.dispatch(changeTextAC(newPostElement.current.value))
     };
 
     return (
