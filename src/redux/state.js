@@ -1,6 +1,6 @@
 const addPost = "addPost";
 const changeText = "changeText";
-
+const sendMessage = "sendMessage";
 
 let store = {
     _state: {
@@ -48,6 +48,13 @@ let store = {
         } else if (action.type === changeText) {
             this._state.mainPage.textForChange = action.text;
             this._renderEntireTree(this._state);
+        } else if (action.type === sendMessage){
+            let newMessage = {
+                id: 4,
+                message: action.text
+            };
+            this._state.dialogsPage.messageData.push(newMessage);
+            this._renderEntireTree(this._state);
         }
     }
 
@@ -65,4 +72,7 @@ export const changeTextAC = (text) => {
         text: text
     }
 }
+
+export const sendMessageAC = (text) => ({type: sendMessage, text: text})
+
 export default store;
