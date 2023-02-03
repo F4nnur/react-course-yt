@@ -6,7 +6,8 @@ let state = {
             {id: 1, data: 'Hi'},
             {id: 2, data: 'Hello'},
             {id: 3, data: 'Cool'},
-        ]
+        ],
+        textForChange: ''
     },
     dialogsPage: {
         dialogData: [
@@ -30,5 +31,12 @@ export let addPost = (text) => {
     state.mainPage.postData.push(newPost);
     renderEntireTree(state);
 };
+
+export let changeText = (text) => {
+    state.mainPage.textForChange = text;
+    renderEntireTree(state);
+};
+
+
 
 export default state;
