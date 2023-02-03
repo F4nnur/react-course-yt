@@ -8,7 +8,7 @@ const Content = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts addPost={props.addPost}/>
             {props.state.postData.map(dataPost => <Post message={dataPost.data}/>)}
         </div>
     );

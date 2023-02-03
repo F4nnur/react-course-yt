@@ -20,4 +20,12 @@ let state = {
     }
 }
 
+export let addPost = (text) => {
+    let newPost = {
+        id: 5,
+        data: text
+    };
+    state.mainPage.postData.push(newPost);
+};
+
 export default state;
