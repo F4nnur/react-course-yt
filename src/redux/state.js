@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 let state = {
     mainPage: {
         postData: [
@@ -26,6 +28,7 @@ export let addPost = (text) => {
         data: text
     };
     state.mainPage.postData.push(newPost);
+    renderEntireTree(state);
 };
 
 export default state;
