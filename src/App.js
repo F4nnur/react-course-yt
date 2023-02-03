@@ -13,8 +13,10 @@ const App = (props) => {
                 <Nav/>
                 <div className={s.AppWrapperContent}>
                     <Routes>
-                        <Route path='/dialogs/*' element={<Dialogs state={props.state.dialogsPage}
-                                                                   messageData={props.state.dialogsPage}/>}/>
+                        <Route path='/dialogs/*' element={
+                            <Dialogs
+                            state={props.state.dialogsPage}
+                            messageData={props.state.dialogsPage}/>}/>
                         <Route path='/content' element={<Content
                             state={props.state.mainPage}
                             addPost={props.addPost}
