@@ -1,5 +1,6 @@
-import {renderEntireTree} from "../render";
+let renderEntireTree = () =>{
 
+}
 let state = {
     mainPage: {
         postData: [
@@ -29,14 +30,16 @@ export let addPost = (text) => {
         data: text
     };
     state.mainPage.postData.push(newPost);
-    renderEntireTree(state);
+    renderEntireTree();
 };
 
 export let changeText = (text) => {
     state.mainPage.textForChange = text;
-    renderEntireTree(state);
+    renderEntireTree();
 };
 
-
+export const subscribe = (observer) => {
+    renderEntireTree = observer;
+}
 
 export default state;
