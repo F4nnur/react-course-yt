@@ -7,10 +7,10 @@ const ProfileInfo = () => {
     return (
         <div>
             <div>
-                <img className={s.Fon} src={image}/>
+                <img alt={'l'} className={s.Fon} src={image}/>
             </div>
             <div>
-                <img className={s.Avatar} src={kek}/>
+                <img alt={'l'} className={s.Avatar} src={kek}/>
             </div>
         </div>
     );

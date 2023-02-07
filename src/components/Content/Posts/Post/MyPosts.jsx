@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Post.module.scss';
-import {addPostAC, changeTextAC} from "../../../../redux/state";
+import {addPostAC} from "../../../../reducer/addPostReducer";
+import {changeTextAC} from "../../../../reducer/changeTextReducer";
 
 const MyPosts = (props) => {
     let newPostElement = React.createRef();

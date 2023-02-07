@@ -4,7 +4,6 @@ import ProfileInfo from "./ProfileInfo";
 import MyPosts from "./Posts/Post/MyPosts";
 
 const Content = (props) => {
-
     return (
         <div>
             <ProfileInfo/>

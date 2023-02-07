@@ -2,10 +2,6 @@ import addPostReducer from "../reducer/addPostReducer";
 import changeTextReducer from "../reducer/changeTextReducer";
 import sendMessageReducer from "../reducer/sendMessageReducer";
 
-const addPost = "addPost";
-const changeText = "changeText";
-const sendMessage = "sendMessage";
-
 let store = {
     _state: {
         mainPage: {
@@ -50,19 +46,5 @@ let store = {
 
 };
 
-export const addPostAC = (text) => {
-    return{
-        type: addPost,
-        text: text}
-};
-
-export const changeTextAC = (text) => {
-    return{
-        type: changeText,
-        text: text
-    }
-}
-
-export const sendMessageAC = (text) => ({type: sendMessage, text: text})
 
 export default store;

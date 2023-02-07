@@ -1,6 +1,10 @@
 const changeText = "changeText";
 
-const changeTextReducer = (state, action) => {
+let initialState = {
+    textForChange: ''
+}
+
+const changeTextReducer = (state = initialState, action) => {
     switch (action.type) {
         case changeText:
             state.textForChange = action.text;
@@ -11,4 +15,10 @@ const changeTextReducer = (state, action) => {
 
 }
 
+export const changeTextAC = (text) => {
+    return{
+        type: changeText,
+        text: text
+    }
+}
 export default changeTextReducer;
