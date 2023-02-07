@@ -1,3 +1,7 @@
+import addPostReducer from "../reducer/addPostReducer";
+import changeTextReducer from "../reducer/changeTextReducer";
+import sendMessageReducer from "../reducer/sendMessageReducer";
+
 const addPost = "addPost";
 const changeText = "changeText";
 const sendMessage = "sendMessage";
@@ -38,24 +42,10 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === addPost) {
-            let newPost = {
-                id: 5,
-                data: action.text
-            };
-            this._state.mainPage.postData.push(newPost)
-            this._renderEntireTree(this._state);
-        } else if (action.type === changeText) {
-            this._state.mainPage.textForChange = action.text;
-            this._renderEntireTree(this._state);
-        } else if (action.type === sendMessage){
-            let newMessage = {
-                id: 4,
-                message: action.text
-            };
-            this._state.dialogsPage.messageData.push(newMessage);
-            this._renderEntireTree(this._state);
-        }
+        this._state.mainPage = addPostReducer(this._state.mainPage, action);
+        this._state.mainPage = changeTextReducer(this._state.mainPage, action);
+        this._state.dialogsPage = sendMessageReducer(this._state.dialogsPage, action);
+        this._renderEntireTree(this._state);
     }
 
 };
