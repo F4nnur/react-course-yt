@@ -1,25 +1,30 @@
 import React from 'react';
 import s from './Dialogs.module.scss';
-import DialogItem from "./DialogItem";
-import Message from "./Message";
-import {sendMessageAC} from "../../reducer/sendMessageReducer";
 
 const Dialogs = (props) => {
     let message = React.createRef();
+
     let sendMessage = () => {
-        props.dispatch(sendMessageAC(message.current.value))
+        props.sendMessage(message.current.value)
     };
+
+    let onMessageChange = () => {
+        props.onMessageChange(message.current.value)
+    }
 
     return (
         <div className={s.Dialogs}>
             <div className={s.DialogsItems}>
-                {props.state.dialogData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>)}
+                {props.dialogElements}
             </div>
             <div className={s.Messages}>
-                {props.messageData.messageData.map(message => <Message message={message.message}/>)}
+                {props.messageElements}
             </div>
             <div>
-                <textarea ref={message}/>
+                <textarea
+                    ref={message}
+                    onChange={onMessageChange}
+                    value={props.newMessageBody}/>
             </div>
             <div>
                 <button onClick={sendMessage}>Send</button>

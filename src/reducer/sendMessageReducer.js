@@ -1,4 +1,5 @@
 const sendMessage = "sendMessage";
+const changeMessage = "changeMessage";
 
 let initialState = {
     dialogData: [
@@ -10,7 +11,8 @@ let initialState = {
         {id: 1, message: 'Hi'},
         {id: 2, message: 'kek'},
         {id: 3, message: 'lol'},
-    ]
+    ],
+    textForChangeMessage: ''
 };
 
 const  sendMessageReducer = (state = initialState, action) => {
@@ -22,11 +24,15 @@ const  sendMessageReducer = (state = initialState, action) => {
             };
             state.messageData.push(newMessage);
             return state;
+        case changeMessage:
+            state.textForChangeMessage = action.text;
+            return state
         default:
             return state;
     }
 }
 
 export const sendMessageAC = (text) => ({type: sendMessage, text: text})
+export const newMessageAC = (text) => ({type: changeMessage, text: text})
 
 export default sendMessageReducer;
