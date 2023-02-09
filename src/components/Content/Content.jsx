@@ -1,16 +1,14 @@
 import React from 'react';
-import Post from "./Posts/Post/Post";
 import ProfileInfo from "./ProfileInfo";
-import MyPosts from "./Posts/Post/MyPosts";
+import MyPostsContainer from "./Posts/Post/MyPostsContainer";
 
 const Content = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts
-                dispatch={props.dispatch}
+            <MyPostsContainer
+                store={props.store}
             />
-            {props.state.postData.map(dataPost => <Post message={dataPost.data}/>)}
         </div>
     );
 };

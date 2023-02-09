@@ -1,30 +1,34 @@
 import React from 'react';
 import s from './Post.module.scss';
-import {addPostAC} from "../../../../reducer/addPostReducer";
-import {changeTextAC} from "../../../../reducer/changeTextReducer";
+import Post from "./Post";
 
 const MyPosts = (props) => {
+    let postElements = props.post.map(dataPost => <Post message={dataPost.data}/>)
+
     let newPostElement = React.createRef();
 
-    const showElement = () => {
-        let text = newPostElement.current.value;
-        props.dispatch(addPostAC(text))
+    const addPost = () => {
+        props.addPost(newPostElement.current.value);
     }
 
     let changeText = () => {
-        props.dispatch(changeTextAC(newPostElement.current.value))
+        let text = newPostElement.current.value;
+        props.updateNewText(text);
     };
-
     return (
         <div className={s.PostBlock}>
             <h1>My posts</h1>
             <div>
                 <textarea
                     onChange={changeText}
-                    ref={newPostElement}/>
+                    ref={newPostElement}
+                    value={props.textForChange}/>
             </div>
-            <div className={s.AddButton}>
-                <button onClick={showElement}>Add</button>
+            <div className={s.addButton}>
+                <button onClick={addPost}>Add</button>
+            </div>
+            <div className={s.posts}>
+                {postElements}
             </div>
         </div>
     );
