@@ -13,8 +13,10 @@ const addPostReducer = (state = initialState, action) => {
                 id: 5,
                 data: action.text
             };
-            state.postData.push(newPost);
-            return state;
+            let state2 = {...state}
+            state2.postData = [...state.postData]
+            state2.postData.push(newPost);
+            return state2;
         default:
             return state
     }
