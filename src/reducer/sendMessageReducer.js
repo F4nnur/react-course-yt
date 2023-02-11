@@ -22,14 +22,16 @@ const  sendMessageReducer = (state = initialState, action) => {
                 id: 4,
                 message: action.text
             };
-            let state2 = {...state}
-            state2.messageData = [...state.messageData]
-            state2.messageData.push(newMessage);
-            return state2;
+            return {
+                ...state,
+                messageData: [...state.messageData, newMessage],
+                textForChangeMessage: ''
+            }
         case changeMessage:
-            let state3 = {...state}
-            state3.textForChangeMessage = action.text;
-            return state3
+            return {
+                ...state,
+                textForChangeMessage: action.text
+            }
         default:
             return state;
     }

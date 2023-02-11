@@ -5,7 +5,7 @@ import Content from "./components/Content/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-const App = (props) => {
+const App = () => {
     return (
         <BrowserRouter>
             <div className={s.AppWrapper}>
@@ -16,13 +16,11 @@ const App = (props) => {
                         <Route
                             path='/dialogs/*'
                             element={<DialogsContainer
-                                store={props.store}
                             />}/>
                         <Route
                             path='/content'
                             element={<Content
-                                store={props.store}
-                        />}/>
+                            />}/>
                     </Routes>
                 </div>
             </div>
