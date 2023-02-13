@@ -30,6 +30,11 @@ const Nav = () => {
                     Settings
                 </NavLink>
             </div>
+            <div className={s.item}>
+                <NavLink className={navSata => navSata.isActive ? s.active : s.item} to='/users'>
+                    Users
+                </NavLink>
+            </div>
         </nav>
     );
 };

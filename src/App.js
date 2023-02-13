@@ -4,6 +4,7 @@ import Nav from "./components/Nav/Nav";
 import Content from "./components/Content/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
     return (
@@ -21,6 +22,10 @@ const App = () => {
                             path='/content'
                             element={<Content
                             />}/>
+                        <Route
+                            path='/users'
+                            element={<UsersContainer/>}
+                        />
                     </Routes>
                 </div>
             </div>
