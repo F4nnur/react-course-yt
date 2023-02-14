@@ -1,7 +1,13 @@
 import React from 'react';
 import image from '../../image_2.png'
+import axios from "axios";
 
 const Users = (props) => {
+    if (props.users.length === 0){
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+            props.setUsers(response.data.items);
+        })
+    }
     return (
         <div>
             {
@@ -25,12 +31,12 @@ const Users = (props) => {
                             </div>
                         </span>
                         <span>
-                            <div>{u.fullName}</div>
+                            <div>{u.name}</div>
                             <div>{u.status}</div>
                         </span>
                         <span>
-                            <div>{u.location.city}</div>
-                            <div>{u.location.county}</div>
+                            <div>{"u.location.city"}</div>
+                            <div>{"u.location.county"}</div>
                         </span>
                     </div>
                 )
