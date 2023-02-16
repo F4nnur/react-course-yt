@@ -3,13 +3,10 @@ import image from "../../image_2.png";
 import axios from "axios";
 
 class UserC extends Component {
-    constructor(props) {
-        super(props);
-        if (this.props.users.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                this.props.setUsers(response.data.items);
-            })
-        }
+    componentDidMount() {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+            this.props.setUsers(response.data.items);
+        })
     }
 
     render() {
