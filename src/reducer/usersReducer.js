@@ -1,14 +1,15 @@
 const follow = 'FOLLOW';
 const unfollow = 'UNFOLLOW';
-const setUsers = 'SetUSERS'
+const setUsers = 'SetUSERS';
+const setCount = 'setCount';
+const setPage = 'setPage';
+const setCurrentPage = 'currentPage';
 
 let initialState = {
-    users: []
-    // users: [
-    //     {id: 1, followed: true, fullName: 'Dima', status: "Kek", location: {city:"Moscow", county: "Russia"}},
-    //     {id: 2, followed: false, fullName: 'Andrew', status: "lel", location: {city:"Moscow", county: "Russia"}},
-    //     {id: 3, followed: true, fullName: 'Dima', status: "Lol", location: {city:"Moscow", county: "Russia"}}
-    // ]
+    users: [],
+    count: 20,
+    page: 5,
+    currentPage: 4
 };
 
 const userReducer = (state=initialState, action) => {
@@ -36,7 +37,13 @@ const userReducer = (state=initialState, action) => {
                 })
             }
         case setUsers:
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
+        case setCount:
+            return {...state, count: action.count}
+        case setPage:
+            return {...state, page: action.page}
+        case setCurrentPage:
+            return {...state, currentPage: action.currentPage}
         default:
             return state;
     }
@@ -44,5 +51,9 @@ const userReducer = (state=initialState, action) => {
 export const userFollowAC = (userId) => ({type: follow, userId});
 export const userUnFollowAC = (userId) => ({type: unfollow, userId});
 export const setUsersAC = (users) => ({type: setUsers, users});
+export const setCountAC = (count) => ({type: setCount, count});
+export const setPageAC = (page) => ({type: setPage, page});
+export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, currentPage});
+
 
 export default userReducer;
