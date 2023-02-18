@@ -1,15 +1,25 @@
 import React from 'react';
 import image from '../../image_2.png'
-import axios from "axios";
+import s from "./style.module.scss";
 
 const Users = (props) => {
-    if (props.users.length === 0){
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setUsers(response.data.items);
-        })
+    let pageCount = Math.ceil(props.count / props.page);
+    let pages = []
+    for (let i = 1; i <= pageCount; i++) {
+        pages.push(i);
     }
+
     return (
         <div>
+            <div>
+                {
+                    pages.map(p => {
+                        return <span className={props.currentPage === p && s.selectPage}
+                                     onClick={() => {
+                                         props.onPageChange(p)}}>{p}</span>
+                    })
+                }
+            </div>
             {
                 props.users.map(u =>
                     <div key={u.id}>
@@ -20,11 +30,15 @@ const Users = (props) => {
                             <div>
                                 {u.followed ?
                                     <button
-                                        onClick={() =>{props.onUserUnFollow(u.id)}}>
+                                        onClick={() => {
+                                            props.onUserUnFollow(u.id)
+                                        }}>
                                         Unfollow
                                     </button>
                                     : <button
-                                        onClick={() => {props.onUserFollow(u.id)}}
+                                        onClick={() => {
+                                            props.onUserFollow(u.id)
+                                        }}
                                     >
                                         Follow
                                     </button>}
