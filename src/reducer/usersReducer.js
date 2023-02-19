@@ -4,12 +4,14 @@ const setUsers = 'SetUSERS';
 const setCount = 'setCount';
 const setPage = 'setPage';
 const setCurrentPage = 'currentPage';
+const toggleIsFetching = 'toggleIsFetching';
 
 let initialState = {
     users: [],
     count: 20,
     page: 5,
-    currentPage: 4
+    currentPage: 4,
+    isFetching: true,
 };
 
 const userReducer = (state=initialState, action) => {
@@ -44,6 +46,8 @@ const userReducer = (state=initialState, action) => {
             return {...state, page: action.page}
         case setCurrentPage:
             return {...state, currentPage: action.currentPage}
+        case toggleIsFetching:
+            return {...state, isFetching: action.isFetching}
         default:
             return state;
     }
@@ -54,6 +58,7 @@ export const setUsersAC = (users) => ({type: setUsers, users});
 export const setCountAC = (count) => ({type: setCount, count});
 export const setPageAC = (page) => ({type: setPage, page});
 export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, currentPage});
+export const setFetching = (isFetching) => ({type: toggleIsFetching, isFetching});
 
 
 export default userReducer;
