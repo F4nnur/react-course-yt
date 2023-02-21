@@ -1,5 +1,6 @@
 const addPost = "addPost";
 const changeText = "changeText";
+const setUserProfile = "setUserProfile";
 
 let initialState = {
     postData: [
@@ -7,7 +8,8 @@ let initialState = {
         {id: 2, data: 'Hello'},
         {id: 3, data: 'Cool'},
     ],
-    textForChange: ''
+    textForChange: '',
+    profile: []
 }
 const addPostReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -26,6 +28,8 @@ const addPostReducer = (state = initialState, action) => {
                 ...state,
                 textForChange: action.text
             }
+        case setUserProfile:
+            return {...state, profile: action.profile}
         default:
             return state
     }
@@ -33,4 +37,5 @@ const addPostReducer = (state = initialState, action) => {
 
 export const addPostAC = (text) => ({type: addPost, text: text});
 export const changeTextAC = (text) => ({type: changeText, text: text});
+export const userProfile = (profile) => ({type: setUserProfile, profile: profile});
 export default addPostReducer;

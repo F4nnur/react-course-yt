@@ -1,10 +1,10 @@
 import s from './style.module.scss';
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
-import Content from "./components/Content/Content";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ContentContainer from "./components/Content/ContentContainer";
 
 const App = () => {
     return (
@@ -19,9 +19,10 @@ const App = () => {
                             element={<DialogsContainer
                             />}/>
                         <Route
-                            path='/content'
-                            element={<Content
-                            />}/>
+                            path='/profile/*'
+                            element={<ContentContainer
+                            />}
+                        />
                         <Route
                             path='/users'
                             element={<UsersContainer/>}
