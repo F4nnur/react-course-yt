@@ -9,7 +9,7 @@ let initialState = {
         {id: 3, data: 'Cool'},
     ],
     textForChange: '',
-    profile: []
+    profile: null
 }
 const addPostReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -37,5 +37,5 @@ const addPostReducer = (state = initialState, action) => {
 
 export const addPostAC = (text) => ({type: addPost, text: text});
 export const changeTextAC = (text) => ({type: changeText, text: text});
-export const userProfile = (profile) => ({type: setUserProfile, profile: profile});
+export const userProfile = (profile) => ({type: setUserProfile, profile})
 export default addPostReducer;

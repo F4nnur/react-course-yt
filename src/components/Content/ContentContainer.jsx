@@ -1,23 +1,25 @@
 import React, {Component} from 'react';
 import ProfileInfo from "./ProfileInfo";
+import MyPostsContainer from "./Posts/Post/MyPostsContainer";
 import axios from "axios";
 import {connect} from "react-redux";
 import {userProfile} from "../../reducer/addPostReducer";
-import MyPostsContainer from "./Posts/Post/MyPostsContainer";
-import {useLocation, useParams, useNavigate} from "react-router-dom";
+import {
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 
 class ContentContainer extends Component {
-
     componentDidMount() {
-        let userID = this.props.router.params.userid
-        if (!userID) {
-            userID =2;
+        let userid = this.props.router.params.userId
+        if (!userid) {
+            userid = 2;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`).then(response => {
-            this.props.userProfile(response.data)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userid}`).then(response => {
+            this.props.setUserProfile(response.data)
         })
     }
-
 
     render() {
         return (
@@ -28,7 +30,6 @@ class ContentContainer extends Component {
         );
     }
 }
-
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
         let location = useLocation();
@@ -44,11 +45,13 @@ function withRouter(Component) {
 
     return ComponentWithRouterProp;
 }
+
 let mapState = (state) => ({
     profile: state.mainPage.profile
-});
+})
+
 let mapDispatch = (dispatch) => ({
-    userProfile: (profile) => {
+    setUserProfile: (profile) => {
         dispatch(userProfile(profile))
     }
 })
