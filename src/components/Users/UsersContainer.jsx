@@ -15,7 +15,7 @@ import Preloader from "../UI/Preloader";
 class UsersApiContainer extends Component {
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.page}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.page}`, {withCredentials: true}).then(response => {
             this.props.setIsFetching(false)
             this.props.setUsers(response.data.items);
             this.props.setCount(response.data.totalCount);
@@ -25,7 +25,7 @@ class UsersApiContainer extends Component {
     onPageChange = (page) => {
         this.props.setCurrentPage(page)
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.page}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.page}`, {withCredentials: true}).then(response => {
             this.props.setIsFetching(false)
             this.props.setUsers(response.data.items);
         })
