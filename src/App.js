@@ -1,16 +1,16 @@
 import s from './style.module.scss';
-import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ContentContainer from "./components/Content/ContentContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
     return (
         <BrowserRouter>
             <div className={s.AppWrapper}>
-                <Header/>
+                <HeaderContainer/>
                 <Nav/>
                 <div className={s.AppWrapperContent}>
                     <Routes>
