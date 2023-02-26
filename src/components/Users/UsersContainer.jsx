@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {
     setCountAC,
-    setCurrentPageAC, setFetching,
+    setCurrentPageAC, setFetching, setFollowing,
     setPageAC,
     setUsersAC,
     userFollowAC,
@@ -42,6 +42,8 @@ class UsersApiContainer extends Component {
                         onUserFollow={this.props.onUserFollow}
                         count={this.props.count}
                         page={this.props.page}
+                        setFollow={this.props.setFollowing}
+                        {...this.props}
                     />
                 }
             </>
@@ -56,6 +58,7 @@ let mapState = (state) => {
         page: state.usersPage.page,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
+        following: state.usersPage.isFollowed,
     }
 };
 
@@ -81,7 +84,10 @@ let mapDispatch = (dispatch) => {
         },
         setIsFetching: (value) => {
             dispatch(setFetching(value))
-        }
+        },
+        setFollowing: (value, id) => {
+            dispatch(setFollowing(value, id))
+    }
     }
 };
 
