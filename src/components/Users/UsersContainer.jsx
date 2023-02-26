@@ -8,29 +8,28 @@ import {
     userUnFollowAC
 } from "../../reducer/usersReducer";
 import React, {Component} from "react";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../UI/Preloader";
+import {usersAPI} from "../../api/api";
 
 class UsersApiContainer extends Component {
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.page}`, {withCredentials: true}).then(response => {
+        usersAPI.getUsers(this.props.currentPage, this.props.page).then(data => {
             this.props.setIsFetching(false)
-            this.props.setUsers(response.data.items);
-            this.props.setCount(response.data.totalCount);
+            this.props.setUsers(data.items);
+            this.props.setCount(data.totalCount);
         })
     }
 
     onPageChange = (page) => {
         this.props.setCurrentPage(page)
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.page}`, {withCredentials: true}).then(response => {
+        usersAPI.getUsers(page, this.props.page).then(data => {
             this.props.setIsFetching(false)
-            this.props.setUsers(response.data.items);
+            this.props.setUsers(data.items);
         })
     }
-
 
     render() {
         return (<>

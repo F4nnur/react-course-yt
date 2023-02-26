@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ProfileInfo from "./ProfileInfo";
 import MyPostsContainer from "./Posts/Post/MyPostsContainer";
-import axios from "axios";
 import {connect} from "react-redux";
 import {userProfile} from "../../reducer/addPostReducer";
 import {
@@ -9,6 +8,7 @@ import {
     useNavigate,
     useParams,
 } from "react-router-dom";
+import {usersAPI} from "../../api/api";
 
 class ContentContainer extends Component {
     componentDidMount() {
@@ -16,8 +16,9 @@ class ContentContainer extends Component {
         if (!userid) {
             userid = 2;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userid}`, {withCredentials: true}).then(response => {
-            this.props.setUserProfile(response.data)
+        usersAPI.geProfile(userid).then(data => {
+            debugger;
+            this.props.setUserProfile(data)
         })
     }
 
