@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Dialogs.module.scss';
-import {Navigate} from "react-router-dom";
 
 const Dialogs = (props) => {
     let message = React.createRef();
@@ -12,8 +11,6 @@ const Dialogs = (props) => {
     let onMessageChange = () => {
         props.onMessageChange(message.current.value)
     }
-    console.log(props.isAuth)
-    if (!props.isAuth) return <Navigate to='/login'/>
 
     return (
         <div className={s.Dialogs}>

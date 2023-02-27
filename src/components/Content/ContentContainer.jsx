@@ -9,6 +9,7 @@ import {
     useParams,
 } from "react-router-dom";
 import {usersAPI} from "../../api/api";
+import {withAuth} from "../../hoc/withAuth";
 
 class ContentContainer extends Component {
     componentDidMount() {
@@ -46,9 +47,10 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
+let AuthRedirectComponent = withAuth(ContentContainer)
+
 let mapState = (state) => ({
     profile: state.mainPage.profile,
-    isAuth: state.auth.isAuth,
 })
 
 let mapDispatch = (dispatch) => ({
@@ -57,4 +59,4 @@ let mapDispatch = (dispatch) => ({
     }
 })
 
-export default connect(mapState, mapDispatch)(withRouter(ContentContainer));
+export default connect(mapState, mapDispatch)(withRouter(AuthRedirectComponent));
