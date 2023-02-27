@@ -9,7 +9,8 @@ let mapState = (state) => {
     return {
         newMessageBody: state.dialogsPage.textForChangeMessage,
         messageElements: state.dialogsPage.messageData.map(message => <Message message={message.message}/>),
-        dialogElements: state.dialogsPage.dialogData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>)
+        dialogElements: state.dialogsPage.dialogData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>),
+        isAuth: state.auth.isAuth
     }
 }
 

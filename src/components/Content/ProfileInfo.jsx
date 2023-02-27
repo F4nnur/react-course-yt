@@ -2,8 +2,10 @@ import React from 'react';
 import s from "./Content.module.scss";
 import image from "../../image_2.png";
 import Preloader from "../UI/Preloader";
+import {Navigate} from "react-router-dom";
 
 const ProfileInfo = (props) => {
+    if(!props.isAuth) return <Navigate to={'/login'}/>
     if(!props.profile){
         return <Preloader/>
     }
