@@ -5,6 +5,7 @@ import Message from "./Message";
 import {newMessageAC, sendMessageAC} from "../../reducer/sendMessageReducer";
 import {connect} from "react-redux";
 import {withAuth} from "../../hoc/withAuth";
+import {compose} from "redux";
 
 let mapState = (state) => {
     return {
@@ -24,7 +25,7 @@ let mapDispatch = (dispatch) => {
         }
     }
 }
-let AuthRedirectContainer = withAuth(Dialogs)
-const DialogsContainer = connect(mapState, mapDispatch)(AuthRedirectContainer);
-
-export default DialogsContainer;
+export default compose(
+    connect(mapState, mapDispatch),
+    withAuth
+)(Dialogs);

@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import {usersAPI} from "../../api/api";
 import {withAuth} from "../../hoc/withAuth";
+import {compose} from "redux";
 
 class ContentContainer extends Component {
     componentDidMount() {
@@ -47,8 +48,6 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-let AuthRedirectComponent = withAuth(ContentContainer)
-
 let mapState = (state) => ({
     profile: state.mainPage.profile,
 })
@@ -59,4 +58,9 @@ let mapDispatch = (dispatch) => ({
     }
 })
 
-export default connect(mapState, mapDispatch)(withRouter(AuthRedirectComponent));
+
+export default compose(
+    connect(mapState, mapDispatch),
+    withRouter,
+    withAuth
+)(ContentContainer)
