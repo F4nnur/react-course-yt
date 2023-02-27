@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const follow = 'FOLLOW';
 const unfollow = 'UNFOLLOW';
 const setUsers = 'SetUSERS';
@@ -67,5 +69,47 @@ export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, current
 export const setFetching = (isFetching) => ({type: toggleIsFetching, isFetching});
 export const setFollowing = (isFollowed, userId) => ({type: toggleIsFollowing, isFollowed, userId});
 
+export const getUsers = (currentPage, page) => {
+    return (dispatch) => {
+        dispatch(setFetching(true))
+        usersAPI.getUsers(currentPage, page).then(data => {
+            dispatch(setFetching(false))
+            dispatch(setUsersAC(data.items));
+            dispatch(setCountAC(data.totalCount));
+        })
+    }
+}
+export const getUOnPng = (currentPage, page) => {
+    return (dispatch) => {
+        dispatch(setPageAC(currentPage))
+        dispatch(setFetching(true))
+        usersAPI.getUsers(currentPage, page).then(data => {
+            dispatch(setFetching(false))
+            dispatch(setUsersAC(data.items));
+        })
+    }
+}
+export const onUnFollow = (id) => {
+    return (dispatch) => {
+        usersAPI.onUnFollow(id).then(data => {
+            dispatch(setFollowing(true, id))
+            if (data.resultCode === 0) {
+                dispatch(setFollowing(false, id))
+                dispatch(userUnFollowAC(id))
+            }
+        })
+    }
+}
+export const onFollow = (id) => {
+    return (dispatch) => {
+        usersAPI.onFollow(id).then(data => {
+            dispatch(setFollowing(true, id))
+            if (data.resultCode === 0) {
+                dispatch(setFollowing(false, id))
+                dispatch(userFollowAC(id))
+            }
+        })
+    }
+}
 
 export default userReducer;

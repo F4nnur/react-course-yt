@@ -16,8 +16,7 @@ class ContentContainer extends Component {
         if (!userid) {
             userid = 2;
         }
-        usersAPI.geProfile(userid).then(data => {
-            debugger;
+        usersAPI.getProfile(userid).then(data => {
             this.props.setUserProfile(data)
         })
     }

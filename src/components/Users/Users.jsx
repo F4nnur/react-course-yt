@@ -2,8 +2,6 @@ import React from 'react';
 import image from '../../image_2.png'
 import s from "./style.module.scss";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
-
 const Users = (props) => {
     let pageCount = Math.ceil(props.count / props.page);
     let pages = []
@@ -35,23 +33,9 @@ const Users = (props) => {
                             <div>
                                 {u.followed
                                     ? <button disabled={props.following.some(id => id === u.id)} onClick={() => {
-                                        props.setFollow(true, u.id)
-                                        usersAPI.onUnFollow(u.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.setFollow(false, u.id)
-                                                props.onUserUnFollow(u.id)
-                                            }
-                                        })
-                                    }}>Unfollow</button>
+                                        props.onUserUnFollow(u.id)}}>Unfollow</button>
                                     : <button disabled={props.following.some(id => id === u.id)} onClick={() => {
-                                        props.setFollow(true, u.id)
-                                        usersAPI.onFollow(u.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.setFollow(false, u.id)
-                                                props.onUserFollow(u.id)
-                                            }
-                                        })
-                                    }}>Follow</button>}
+                                        props.onUserFollow(u.id)}}>Follow</button>}
                             </div>
                         </span>
                         <span>

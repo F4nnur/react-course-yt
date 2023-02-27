@@ -13,7 +13,7 @@ export const usersAPI = {
                 return response.data
             })
     },
-    geProfile(userId = 2) {
+    getProfile(userId = 2) {
         return instance.get(`/profile/${userId}`)
             .then(response => {
                 return response.data

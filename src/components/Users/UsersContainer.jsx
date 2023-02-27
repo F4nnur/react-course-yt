@@ -1,34 +1,23 @@
 import {connect} from "react-redux";
 import {
+    getUOnPng,
+    getUsers, onFollow, onUnFollow,
     setCountAC,
-    setCurrentPageAC, setFetching, setFollowing,
+    setFetching, setFollowing,
     setPageAC,
     setUsersAC,
-    userFollowAC,
-    userUnFollowAC
 } from "../../reducer/usersReducer";
 import React, {Component} from "react";
 import Users from "./Users";
 import Preloader from "../UI/Preloader";
-import {usersAPI} from "../../api/api";
 
 class UsersApiContainer extends Component {
     componentDidMount() {
-        this.props.setIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.page).then(data => {
-            this.props.setIsFetching(false)
-            this.props.setUsers(data.items);
-            this.props.setCount(data.totalCount);
-        })
+        this.props.getUsers(this.props.currentPage, this.props.page)
     }
 
     onPageChange = (page) => {
-        this.props.setCurrentPage(page)
-        this.props.setIsFetching(true)
-        usersAPI.getUsers(page, this.props.page).then(data => {
-            this.props.setIsFetching(false)
-            this.props.setUsers(data.items);
-        })
+        this.props.getUOnPageChe(page, this.props.page)
     }
 
     render() {
@@ -64,11 +53,17 @@ let mapState = (state) => {
 
 let mapDispatch = (dispatch) => {
     return {
+        getUOnPageChe: (currenPage, page) => {
+          dispatch(getUOnPng(currenPage, page))
+        },
+        getUsers: (page, count) => {
+          dispatch(getUsers(page,count))
+        },
         onUserFollow: (useId) => {
-            dispatch(userFollowAC(useId))
+            dispatch(onFollow(useId))
         },
         onUserUnFollow: (userId) => {
-            dispatch(userUnFollowAC(userId))
+            dispatch(onUnFollow(userId))
         },
         setUsers: (users) => {
             dispatch(setUsersAC(users))
@@ -78,9 +73,6 @@ let mapDispatch = (dispatch) => {
         },
         setCount: (count) => {
             dispatch(setCountAC(count))
-        },
-        setCurrentPage: (page) => {
-            dispatch(setCurrentPageAC(page))
         },
         setIsFetching: (value) => {
             dispatch(setFetching(value))
