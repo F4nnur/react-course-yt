@@ -13,6 +13,8 @@ import {withAuth} from "../../hoc/withAuth";
 import {compose} from "redux";
 
 class ContentContainer extends Component {
+
+
     componentDidMount() {
         let userid = this.props.router.params.userId
         if (!userid) {
